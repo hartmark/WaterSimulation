@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace WaterSimulation;
 
 public class TileData
@@ -76,6 +78,7 @@ public class TileData
     public void Commit()
     {
         WaterAmount += WaterAmountPending;
+        Assert.True(WaterAmount >= 0);
         WaterAmountPending = 0;
     }
 }

@@ -4,7 +4,7 @@ namespace WaterSimulation;
 
 public static class TilesExtensions
 {
-    public static string GetTilePrint(this List<List<TileData>> tiles)
+    public static string GetTilePrint(this List<List<TileData>> tiles, bool round = false)
     {
         var stringBuilder = new StringBuilder();
         for (var i = 0; i < tiles.Count; i++)
@@ -12,7 +12,14 @@ public static class TilesExtensions
             stringBuilder.Append("{ ");
             for (var j = 0; j < tiles[0].Count; j++)
             {
-                stringBuilder.Append(tiles[i][j].TotalHeight.ToString("N4"));
+                if (round)
+                {
+                    stringBuilder.Append(tiles[i][j].TotalHeight.ToString("N4"));
+                }
+                else
+                {
+                    stringBuilder.Append(tiles[i][j].TotalHeight);
+                }
                 if (j != tiles[0].Count - 1)
                 {
                     stringBuilder.Append(", ");
